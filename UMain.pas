@@ -75,7 +75,7 @@ var
   DataArray: TJSONArray;
   Item: TJSONValue;
   Status, MessageText: string;
-  Kode, Uraian: string;
+  Kode, Uraian, pesannya: string;
   i : Integer;
   DataObject: TJSONObject;
 begin
@@ -131,12 +131,19 @@ begin
       end
       else
       begin
-        ShowMessage('Failed to retrieve data. Status Code: ' + IntToStr(Response.StatusCode));
+        pesannya:='Gagal memuat datanya. Status Code : ' +
+        IntToStr(Response.StatusCode);
+        StatusBar1.Panels[0].Text:='Pesan Sistem : ' +
+        pesannya;
+        MessageBox(Self.Handle,PChar(pesannya),
+        PChar('Peringatan'), MB_ICONWARNING);
       end;
     except
       on E: Exception do
       begin
-        ShowMessage('Error: ' + E.Message);
+        pesannya:='Error: ' + E.Message;
+        MessageBox(Self.Handle,PChar(pesannya),
+        PChar('Error'), MB_ICONERROR);
       end;
     end;
   finally

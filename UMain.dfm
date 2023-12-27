@@ -47,8 +47,5 @@ object Form1: TForm1
         Text = 'Pesan Sistem : Standby'
         Width = 50
       end>
-    ExplicitLeft = 256
-    ExplicitTop = 272
-    ExplicitWidth = 0
   end
 end
